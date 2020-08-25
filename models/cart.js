@@ -1,3 +1,4 @@
+
 module.exports = function Cart(oldCart) {
     this.items = oldCart.items || {};
     this.Teste22 = oldCart.Teste22 || 0;
@@ -26,6 +27,12 @@ module.exports = function Cart(oldCart) {
     
     
     
+          }
+
+          this.removeItem = function(id){
+              this.totalQty-= this.items[id].qty
+              this.totalprice -= this.items[id].item.preco;
+              delete this.items[id]
           }
 
      this.generateArray = function () {

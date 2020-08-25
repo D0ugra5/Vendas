@@ -709,6 +709,23 @@ app.post("/buscar", (req, res) => {
 
 })
 
+app.get("/remove/:id", (req,res,next)=>{
+
+
+var productId = req.params.id;
+var cart = new Cart(req.session.cart ? req.session.cart:{})
+
+
+cart.removeItem(productId)
+req.session.cart =cart
+res.redirect("/shopping-cart")
+
+
+})
+
+
+
+
 app.post("/resposta",(req,res)=>{
 
     console.log(req.query)
