@@ -49,7 +49,7 @@ const db = require ("./config/db")
 //Mercado Config 
 MercadoPago.configure({
     sandbox: true,
-    access_token: "TEST-4425042818282530-082500-ed30a0afa9e70d9a5697a7a203fd49d6-224163688"
+    access_token: "APP_USR-4425042818282530-082500-5f8a1c4d5588ced63911aed2f7b3861d-224163688"
 
 })
 
@@ -219,7 +219,7 @@ app.engine('handlebars', handlebars({ defaultLayout: 'main' }), hbs.engine)
 app.set('view engine', 'handlebars')
 //moogonse
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true , useUnifiedTopology: true  }).then(() => {
+mongoose.connect("mongodb://localhost/blogapp").then(() => {
 
     console.log("Banco Conectado ")
 
