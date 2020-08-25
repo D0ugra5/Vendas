@@ -32,14 +32,42 @@
 </div>
 </div>
 <div class="card">
+
+
+
     <div class="card-body">
 
-
+  
         <strong class="ml-4 mt-3">Total:{{totalprice}}</strong>
+    
+        {{#if user}}
+        <a href="/cep">
  <button class="btn btn-success float-right mr-3">Comprar</button>
+ </a>
+
+ {{else}}
+<a href="/usuarios/login">
+ <button class="btn btn-success float-right mr-3">Para Continuar Faça o Login </button>
+ </a>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+{{/if}}
+
+
+
+
+
+
+
+
 
 
 

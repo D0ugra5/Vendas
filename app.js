@@ -825,7 +825,13 @@ app.post("/Pedido", async (req, res, next) => {
 })
 
 
+app.post("/not",(req,res)=>{
 
+console.log(req.query)
+res.send("OK")
+
+
+})
 
 
 

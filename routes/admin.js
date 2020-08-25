@@ -253,6 +253,13 @@ router.post("/postagem/edit",upload.single("Foto"),eAdmin,(req, res) => {
            postagem.conteudo = req.body.conteudo
            postagem.categoria= req.body.categoria
            postagem.nomeImagem= req.file.filename
+           postagem.preco = req.body.preco
+           postagem.peso = req.body.peso
+           postagem.formato=req.body.formato
+           postagem.comprimento=req.body.comprimento
+           postagem.altura=req.body.altura
+           postagem.largura=req.body.largura
+           postagem.diametro=req.body.diametro
 
            postagem.save().then(()=>{
 
@@ -261,7 +268,7 @@ router.post("/postagem/edit",upload.single("Foto"),eAdmin,(req, res) => {
 
            }).catch((err)=>{
 
-            req.flash("error","Postagem editada com Falha")
+            req.flash("error","Postagem editada com Falha"+err)
             res.redirect("/admin/postagens")
 
 
