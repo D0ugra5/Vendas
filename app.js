@@ -712,7 +712,7 @@ app.post("/buscar", (req, res) => {
 app.post("/resposta",(req,res)=>{
     console.log("passei")
     console.log(req.query)
-    res.send("CREATED")
+    res.send("OK")
     
     
     })
@@ -864,7 +864,7 @@ app.use("/usuarios", usuarios)
 
 
 //Outros
-const PORT = 80
+const PORT =process.env.PORT || 80
 app.listen(PORT, () => {
 
     console.log("Servidor On")
