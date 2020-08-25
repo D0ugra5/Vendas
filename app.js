@@ -710,11 +710,11 @@ app.post("/buscar", (req, res) => {
 })
 
 app.post("/resposta",(req,res)=>{
-    console.log("passei")
+
     console.log(req.query)
     res.send("OK")
     
-    mercadopago.ipn
+mercadopago.ipn
   .manage(request)
   .then(function(response) {
     console.log(response);
@@ -797,7 +797,7 @@ app.post("/Pedido", async (req, res, next) => {
 
         new Pagamentos(novoPagamento).save().then(() => {
            
-           console.log("passei")
+           console.log(Pagamentos)
 
 
         }).catch((err) => {
