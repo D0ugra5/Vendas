@@ -712,16 +712,9 @@ app.post("/buscar", (req, res) => {
 app.post("/resposta",(req,res)=>{
 
     console.log(req.query)
-    res.send("OK")
+    res.send("CREATED")
     
-mercadopago.ipn
-  .manage(request)
-  .then(function(response) {
-    console.log(response);
-  })
-  .then(function(error) {
-    console.log(error);
-  });
+
     
     })
 
