@@ -709,6 +709,14 @@ app.post("/buscar", (req, res) => {
 
 })
 
+app.post("/notificacoes",(req,res)=>{
+    console.log("passei")
+    console.log(req.query)
+    res.send("OK")
+    
+    
+    })
+
 app.post("/Pedido", async (req, res, next) => {
     var ValorTotalFretee = req.body.ValorTotalFrete
     var ValorTotal2 = req.body.valorFinal
@@ -825,13 +833,7 @@ app.post("/Pedido", async (req, res, next) => {
 })
 
 
-app.post("/not",(req,res)=>{
-console.log("passei")
-console.log(req.query)
-res.send("OK")
 
-
-})
 
 
 
