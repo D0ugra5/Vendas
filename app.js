@@ -219,7 +219,7 @@ app.engine('handlebars', handlebars({ defaultLayout: 'main' }), hbs.engine)
 app.set('view engine', 'handlebars')
 //moogonse
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/blogapp").then(() => {
+mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true , useUnifiedTopology: true  }).then(() => {
 
     console.log("Banco Conectado ")
 
