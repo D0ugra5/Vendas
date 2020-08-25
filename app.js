@@ -714,6 +714,14 @@ app.post("/resposta",(req,res)=>{
     console.log(req.query)
     res.send("OK")
     
+    mercadopago.ipn
+  .manage(request)
+  .then(function(response) {
+    console.log(response);
+  })
+  .then(function(error) {
+    console.log(error);
+  });
     
     })
 
