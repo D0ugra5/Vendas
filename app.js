@@ -826,7 +826,7 @@ app.post("/Pedido", async (req, res, next) => {
 
 
 app.post("/not",(req,res)=>{
-
+console.log("passei")
 console.log(req.query)
 res.send("OK")
 
