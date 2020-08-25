@@ -49,7 +49,7 @@ const db = require ("./config/db")
 //Mercado Config 
 MercadoPago.configure({
     sandbox: true,
-    access_token: "APP_USR-4425042818282530-082500-5f8a1c4d5588ced63911aed2f7b3861d-224163688"
+    access_token: "TEST-4425042818282530-082500-ed30a0afa9e70d9a5697a7a203fd49d6-224163688"
 
 })
 
@@ -709,10 +709,10 @@ app.post("/buscar", (req, res) => {
 
 })
 
-app.post("/notificacoes",(req,res)=>{
+app.post("/resposta",(req,res)=>{
     console.log("passei")
     console.log(req.query)
-    res.send("OK")
+    res.send("CREATED")
     
     
     })
@@ -864,7 +864,7 @@ app.use("/usuarios", usuarios)
 
 
 //Outros
-const PORT =process.env.PORT || 80
+const PORT = 80
 app.listen(PORT, () => {
 
     console.log("Servidor On")
