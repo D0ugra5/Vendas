@@ -740,7 +740,10 @@ var id = req.query.id
      var pagamentosC = data.body.results[0]
      if (pagamentosC != undefined){
 
-        console.log(pagamentosC)
+
+        
+        console.log(pagamentosC.external_reference)
+        console.log(pagamentosC.status)
      }else{
          console.log("Error")
      }
