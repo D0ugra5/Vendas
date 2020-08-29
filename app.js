@@ -728,7 +728,23 @@ app.get("/remove/:id", (req, res, next) => {
 
 app.post("/resposta", (req, res) => {
 
-    console.log(req.query)
+var id = req.query.id
+
+  setTimeout(()=>{
+ var filtro = {
+     "order.id":id
+ }
+ MercadoPago.payment.search({
+     qs:filtro
+ }).then(data=>{
+     console.log(data)
+ }).catch(err=>{
+     console.log(err)
+ })
+  },20000)
+
+
+
     res.send("CREATED")
 
 
@@ -743,6 +759,7 @@ app.post("/Pedido", async (req, res, next) => {
     var complemento = req.body.complemento
     var observacoes = req.body.observacoes
     const NomeCliente = req.user._id
+    var stt = "Analisando"
 
     var cart = new Cart(req.session.cart)
 
@@ -771,6 +788,7 @@ app.post("/Pedido", async (req, res, next) => {
         observacoes: req.body.observacoes,
         IdUsuario: req.user._id,
         Produtos: arr,
+        Status : stt
     }
 
 

@@ -57,7 +57,10 @@ idPagamento:{
         
     },
  
-
+ Status:{
+ type:String,
+ required:true
+ }
 
 
 
