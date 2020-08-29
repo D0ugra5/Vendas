@@ -45,7 +45,7 @@ const MercadoPago = require("mercadopago")
 //carrinho js
 const Cart = require("./models/cart")
 //db
-const db = require ("./config/db")
+const db = require("./config/db")
 //Mercado Config 
 MercadoPago.configure({
     sandbox: true,
@@ -219,7 +219,7 @@ app.engine('handlebars', handlebars({ defaultLayout: 'main' }), hbs.engine)
 app.set('view engine', 'handlebars')
 //moogonse
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true , useUnifiedTopology: true  }).then(() => {
+mongoose.connect("mongodb+srv://DevsJabinho:Jabinho@13@cluster0.f46a1.mongodb.net/Cluster0?retryWrites=true&w=majority",{ useNewUrlParser: true , useUnifiedTopology: true}).then(() => {
 
     console.log("Banco Conectado ")
 
@@ -709,16 +709,16 @@ app.post("/buscar", (req, res) => {
 
 })
 
-app.get("/remove/:id", (req,res,next)=>{
+app.get("/remove/:id", (req, res, next) => {
 
 
-var productId = req.params.id;
-var cart = new Cart(req.session.cart ? req.session.cart:{})
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {})
 
 
-cart.removeItem(productId)
-req.session.cart =cart
-res.redirect("/shopping-cart")
+    cart.removeItem(productId)
+    req.session.cart = cart
+    res.redirect("/shopping-cart")
 
 
 })
@@ -726,14 +726,14 @@ res.redirect("/shopping-cart")
 
 
 
-app.post("/resposta",(req,res)=>{
+app.post("/resposta", (req, res) => {
 
     console.log(req.query)
     res.send("CREATED")
-    
 
-    
-    })
+
+
+})
 
 app.post("/Pedido", async (req, res, next) => {
     var ValorTotalFretee = req.body.ValorTotalFrete
@@ -802,16 +802,16 @@ app.post("/Pedido", async (req, res, next) => {
     }
     try {
         var PagamentosF = await MercadoPago.preferences.create(dados)
-       
-       
+
+
 
         new Pagamentos(novoPagamento).save().then(() => {
-           
-           console.log(Pagamentos)
+
+            console.log(Pagamentos)
 
 
         }).catch((err) => {
-            console.log("triste"+err)
+            console.log("triste" + err)
         })
 
 
@@ -821,7 +821,7 @@ app.post("/Pedido", async (req, res, next) => {
 
         return res.redirect(PagamentosF.body.init_point)
 
-      
+
 
     } catch (err) {
         console.log("teste")
@@ -851,10 +851,40 @@ app.post("/Pedido", async (req, res, next) => {
 })
 
 
+app.get("/Sobre", (req, res) => {
+
+    res.render("Sobre/sobre2")
+
+
+
+})
+
+
+app.get("/perfil", (req, res, next) => {
+
+    Pagamentos.find({ IdUsuario: req.user._id }).then((pagamentos) => {
+       
+        var cart;
+        pagamentos.forEach((order) => {
+            cart = new Cart(order.Produtos)
+            order.items = cart.generateArray();
 
 
 
 
+        })
+  
+
+        res.render("Usuarios/Compra", { pagamentos: pagamentos })
+
+    })
+
+
+
+
+
+
+})
 
 
 
@@ -882,8 +912,8 @@ app.use("/usuarios", usuarios)
 
 
 //Outros
-const PORT =process.env.PORT || 80
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 8081
+app.listen(80, () => {
 
     console.log("Servidor On")
 })
