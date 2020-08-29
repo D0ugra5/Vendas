@@ -737,6 +737,13 @@ var id = req.query.id
  MercadoPago.payment.search({
      qs:filtro
  }).then(data=>{
+     var pagamentosC = data.body.results[0]
+     if (pagamentosC != undefined){
+
+        console.log(pagamentosC)
+     }else{
+         console.log("Error")
+     }
      console.log(data)
  }).catch(err=>{
      console.log(err)
