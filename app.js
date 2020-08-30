@@ -757,12 +757,6 @@ app.post("/resposta", (req, res) => {
                                 console.log("tmj junto doug fiz a boa do salvamento")
 
 
-                            }).catch(err => {
-
-
-
-
-                                console.log("errinho"+err)
                             })
 
                         } else {
