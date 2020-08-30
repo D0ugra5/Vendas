@@ -752,11 +752,17 @@ app.post("/resposta", (req, res) => {
                         if (pagamentos) {
                             console.log(pagamentos.IdUsuario)
                             pagamentos.Status = "Pagamento Aprovado, Seu pedido esta sendo Preparado"
-                            pagamentos.save().then(()=>{
+                            pagamentos.save().then(() => {
 
-                                           console.log("tmj junto doug fiz a boa do salvamento")
-                                        
+                                console.log("tmj junto doug fiz a boa do salvamento")
 
+
+                            }).catch(err => {
+
+
+
+
+                                console.log("errinho"+err)
                             })
 
                         } else {
@@ -767,12 +773,6 @@ app.post("/resposta", (req, res) => {
 
 
 
-                    }).catch(err=>{
-
-
-
-
-                        console.log("errinho")
                     })
 
 
