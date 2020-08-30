@@ -747,11 +747,11 @@ app.post("/resposta", (req, res) => {
                 var idpag = pagamentosC.external_reference
                 var statusM = pagamentosC.status
                 if (statusM === 'approved') {
-                    Pagamentos.findOne({ idPagamento: idpag }).lean().then((pagamentos) => {
+                    Pagamentos.findOne({ idPagamento: idpag }).then((pagamentos) => {
 
                         if (pagamentos) {
                             console.log(pagamentos.IdUsuario)
-                            pagamentos.Status = "Pagamento Aprovado, Seu pedido esta sendo Preparado"
+                           pagamentos.Status = "Pagamento Aprovado, Seu pedido esta sendo Preparado"
                             pagamentos.save().then(() => {
 
                                 console.log("tmj junto doug fiz a boa do salvamento")
