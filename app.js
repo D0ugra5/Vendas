@@ -219,7 +219,7 @@ app.engine('handlebars', handlebars({ defaultLayout: 'main' }), hbs.engine)
 app.set('view engine', 'handlebars')
 //moogonse
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb+srv://DevsJabinho:Jabinho@13@cluster0.f46a1.mongodb.net/Cluster0?retryWrites=true&w=majority",{ useNewUrlParser: true , useUnifiedTopology: true}).then(() => {
+mongoose.connect("mongodb+srv://DevsJabinho:Jabinho@13@cluster0.f46a1.mongodb.net/Cluster0?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
 
     console.log("Banco Conectado ")
 
@@ -728,57 +728,57 @@ app.get("/remove/:id", (req, res, next) => {
 
 app.post("/resposta", (req, res) => {
 
-var id = req.query.id
+    var id = req.query.id
 
-  setTimeout(()=>{
- var filtro = {
-     "order.id":id
- }
- MercadoPago.payment.search({
-     qs:filtro
- }).then(data=>{
-     var pagamentosC = data.body.results[0]
-     if (pagamentosC != undefined){
-
-
-        
-        console.log(pagamentosC.external_reference)
-        console.log(pagamentosC.status)
-        var idpag = pagamentosC.external_reference
- var statusM = pagamentosC.status
- if(statusM === approved ){
-Pagamentos.findOne({idPagamento:idpag}).lean().then((pagamentos)=>{
-    
-  if(pagamentos){
-      console.log(pagamentos.IdUsuario)
-  }else{
-      
-
-   console.log("ohh shit")
-}
+    setTimeout(() => {
+        var filtro = {
+            "order.id": id
+        }
+        MercadoPago.payment.search({
+            qs: filtro
+        }).then(data => {
+            var pagamentosC = data.body.results[0]
+            if (pagamentosC != undefined) {
 
 
 
-})
+                console.log(pagamentosC.external_reference)
+                console.log(pagamentosC.status)
+                var idpag = pagamentosC.external_reference
+                var statusM = pagamentosC.status
+                if (statusM === 'approved') {
+                    Pagamentos.findOne({ idPagamento: idpag }).lean().then((pagamentos) => {
+
+                        if (pagamentos) {
+                            console.log(pagamentos.IdUsuario)
+                        } else {
+
+
+                            console.log("ohh shit")
+                        }
 
 
 
-
- }
+                    })
 
 
 
 
+                }
 
 
-     }else{
-         console.log("Error")
-     }
-     console.log(data)
- }).catch(err=>{
-     console.log(err)
- })
-  },20000)
+
+
+
+
+            } else {
+                console.log("Error")
+            }
+            console.log(data)
+        }).catch(err => {
+            console.log(err)
+        })
+    }, 20000)
 
 
 
@@ -825,7 +825,7 @@ app.post("/Pedido", async (req, res, next) => {
         observacoes: req.body.observacoes,
         IdUsuario: req.user._id,
         Produtos: arr,
-        Status : stt
+        Status: stt
     }
 
 
@@ -918,7 +918,7 @@ app.get("/Sobre", (req, res) => {
 app.get("/perfil", (req, res, next) => {
 
     Pagamentos.find({ IdUsuario: req.user._id }).then((pagamentos) => {
-       
+
         var cart;
         pagamentos.forEach((order) => {
             cart = new Cart(order.Produtos)
@@ -928,7 +928,7 @@ app.get("/perfil", (req, res, next) => {
 
 
         })
-  
+
 
         res.render("Usuarios/Compra", { pagamentos: pagamentos })
 
