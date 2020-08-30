@@ -845,7 +845,7 @@ app.post("/Pedido", async (req, res, next) => {
         complemento: req.body.complemento,
         observacoes: req.body.observacoes,
         IdUsuario: req.user._id,
-        card: cart,
+        cart: cart,
         Status: stt
     }
 
