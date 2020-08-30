@@ -775,7 +775,7 @@ app.post("/resposta", (req, res) => {
                 }
 
 
-                
+
 
 
 
@@ -845,7 +845,7 @@ app.post("/Pedido", async (req, res, next) => {
         complemento: req.body.complemento,
         observacoes: req.body.observacoes,
         IdUsuario: req.user._id,
-        Produtos: arr,
+        card: cart,
         Status: stt
     }
 
@@ -936,24 +936,30 @@ app.get("/Sobre", (req, res) => {
 })
 
 
-app.get("/perfil", (req, res, next) => {
+app.get("/perfil", (req, res,next) => {
 
-    Pagamentos.find({ IdUsuario: req.user._id }).then((pagamentos) => {
+    Pagamentos.find({ IdUsuario: req.user._id }, function (err, orders) {
 
-        var cart;
-        pagamentos.forEach((order) => {
-            cart = new Cart(order.Produtos)
-            order.items = cart.generateArray();
+        if (err) {
+
+            return res.write('Error')
+
+        }
+        var cart
+        orders.forEach(function (order) {
+              cart = new Cart(order.Produtos)
+
+              order.items = cart.generateArray()
+        });
+  
+        
+ 
+  res.render("Usuarios/Compra",{orders:orders})
+    }).lean();
 
 
 
 
-        })
-
-
-        res.render("Usuarios/Compra", { pagamentos: pagamentos })
-
-    })
 
 
 
@@ -989,7 +995,7 @@ app.use("/usuarios", usuarios)
 
 //Outros
 const PORT = process.env.PORT || 8081
-app.listen(80, () => {
+app.listen(8081, () => {
 
     console.log("Servidor On")
 })

@@ -1,16 +1,9 @@
+<h1>Minha Compras :</h1>
+{{#each orders}}
 
- 
-  <h1>Minha Compras :</h1>
-    {{#each pagamentos}}
-<div class="card">
-   
-    {{#each this.items}}
-  
-    <div class="card-body">
-    <h2>Produto : {{this.cart.totalprice}} </h1>          
-     <h3>Quantidade : {{this.qty}}</h3> 
-      <h4> Preço {{this.valorTotal}}</h4>
-    </div>
-    {{/each}}
-    {{/each}}
+  {{#each this.items}}
+ <h1>{{this.preco}}</h1>
+{{/each}}
+
 </div>
+{{/each}}

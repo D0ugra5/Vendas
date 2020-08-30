@@ -50,7 +50,7 @@ idPagamento:{
         required: true
     },
 
-    Produtos:{
+    cart:{
 
         type:Object,
         required:true
