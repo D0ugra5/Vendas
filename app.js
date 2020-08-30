@@ -751,7 +751,7 @@ app.post("/resposta", (req, res) => {
 
                         if (pagamentos) {
                             console.log(pagamentos.IdUsuario)
-                           pagamentos.Status = "Pagamento Aprovado, Seu pedido esta sendo Preparado"
+                            pagamentos.Status = "Pagamento Aprovado, Seu pedido esta sendo Preparado"
                             pagamentos.save().then(() => {
 
                                 console.log("tmj junto doug fiz a boa do salvamento")
@@ -775,12 +775,52 @@ app.post("/resposta", (req, res) => {
                 }
 
 
+                if(statusM === 'rejected'){
+
+                    Pagamentos.findOne({ idPagamento: idpag }).then((pagamentos) => {
+
+                        if (pagamentos) {
+                            console.log(pagamentos.IdUsuario)
+                            pagamentos.Status = "Pagamento Rejeitado"
+                            pagamentos.save().then(() => {
+
+                                console.log("tmj junto doug fiz a boa do salvamento")
+
+
+                            })
+
+                        } else {
+
+
+                            console.log("ohh shit")
+                        }
+
+
+
+                    })
+
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
             } else {
-                console.log("Error")
+
             }
             console.log(data)
         }).catch(err => {
