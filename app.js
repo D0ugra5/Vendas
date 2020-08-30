@@ -744,6 +744,33 @@ var id = req.query.id
         
         console.log(pagamentosC.external_reference)
         console.log(pagamentosC.status)
+        var idpag = pagamentosC.external_reference
+ var statusM = pagamentosC.status
+ if(statusM === approved ){
+Pagamentos.findOne({idPagamento:idpag}).lean().then((pagamentos)=>{
+    
+  if(pagamentos){
+      console.log(pagamentos.IdUsuario)
+  }else{
+      
+
+   console.log("ohh shit")
+}
+
+
+
+})
+
+
+
+
+ }
+
+
+
+
+
+
      }else{
          console.log("Error")
      }
