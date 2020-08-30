@@ -751,6 +751,15 @@ app.post("/resposta", (req, res) => {
 
                         if (pagamentos) {
                             console.log(pagamentos.IdUsuario)
+                            pagamentos.Status = 'Pagamento Aprovado, Seu pedido esta sendo Preparado'
+                            pagamentos.save().then(() => {
+
+
+                                console.log("Salvei La doug ")
+
+
+                            })
+
                         } else {
 
 
