@@ -749,25 +749,30 @@ app.post("/resposta", (req, res) => {
                 if (statusM === 'approved') {
                     Pagamentos.findOne({ idPagamento: idpag }).lean().then((pagamentos) => {
 
-                        
+                        if (pagamentos) {
                             console.log(pagamentos.IdUsuario)
-                            pagamentos.Status = 'Pagamento Aprovado, Seu pedido esta sendo Preparado'
-                            
-                            
-                            
-                            
-                            pagamentos.save().then(() => {
+                            pagamentos.Status = "Pagamento Aprovado, Seu pedido esta sendo Preparado"
+                            pagamentos.save().then(()=>{
 
-
-                                console.log("Salvei La doug ")
-
+                                           console.log("tmj junto doug fiz a boa do salvamento")
+                                        
 
                             })
 
-                        
+                        } else {
+
+
+                            console.log("ohh shit")
+                        }
 
 
 
+                    }).catch(err=>{
+
+
+
+
+                        console.log("errinho")
                     })
 
 
