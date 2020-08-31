@@ -3,14 +3,14 @@ const Schema = mongoose.Schema;
 
 const PagamentoStatus = new Schema({
 
-idPagamento:{
+    idPagamento: {
 
-    type: String,
-    required:true
+        type: String,
+        required: true
 
 
 
-},
+    },
 
 
 
@@ -39,34 +39,54 @@ idPagamento:{
     },
     complemento: {
         type: String,
-       
+
     },
     observacoes: {
         type: String,
-       
+
     },
     IdUsuario: {
         type: String,
         required: true
     },
 
-    cart:{
+    cart: {
 
-        type:Object,
-        required:true
-        
+        type: Object,
+        required: true
+
     },
- 
- Status:{
- type:String,
- required:true
- },
 
- StatusV : {
- type:Number,
- default:0
+    Status: {
+        type: String,
+        required: true
+    },
 
- }
+    StatusV: {
+        type: Number,
+        default: 0
+
+    },
+
+    cpf: {
+        type: Number,
+        required: true
+    },
+    cidade: {
+        type: String,
+        required: true
+    },
+    NomeCliente: {
+        type: String,
+        required: true
+
+    },
+    email: {
+        type: String,
+        required: true
+
+    }
+
 
 
 

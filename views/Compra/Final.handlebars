@@ -39,20 +39,26 @@
 
         <strong class="ml-4 mt-3">Produtos:{{totalprice}}R$</strong>
         <strong class="ml-4 mt-3">Frete:{{valorF}}R$</strong>
-           <strong class="ml-4 mt-3">Total:{{totalR}}R$</strong>
-       
+        <strong class="ml-4 mt-3">Total:{{totalR}}R$</strong>
+
     </div>
 </div>
 </div>
 
 
 
-<div class="card " >
+<div class="card ">
     <div class="card-body">
-       
+
         <form action="/Pedido" method="POST">
-         <input type="hidden" name="frete" value="{{valorF}}">
+            <input type="hidden" name="frete" value="{{valorF}}">
             <input type="hidden" name="valorFinal" value="{{totalR}}">
+            <label for="Endereço">Nome Comprador</label>
+            <input type="text" name="nome" class="form-control">
+            <label for="Endereço">cpf</label>
+            <input type="text" name="cpf" class="form-control">
+            <label for="Endereço">cidade</label>
+            <input type="text" name="cidade" class="form-control">
             <label for="Endereço">Endereço</label>
             <input type="text" name="end" class="form-control">
             <label for="Numero">Numero</label>
@@ -62,7 +68,7 @@
             <label for="Observações">Observações</label>
             <input type="text" name="observacoes" class="form-control">
 
-       <button class="btn btn-success mt-4"> Comprar </button>
+            <button class="btn btn-success mt-4"> Comprar </button>
 
 
 

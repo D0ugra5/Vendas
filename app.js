@@ -848,6 +848,11 @@ app.post("/Pedido", async (req, res, next) => {
         IdUsuario: req.user._id,
         cart: cart,
         Status: stt,
+        cpf:req.body.cpf,
+        cidade:req.body.cidade,
+        NomeCliente:req.body.nome,
+        email:req.user.email
+
        
     }
 
@@ -1034,7 +1039,7 @@ app.use("/usuarios", usuarios)
 
 //Outros
 const PORT = process.env.PORT || 8081
-app.listen(80, () => {
+app.listen(8081, () => {
 
     console.log("Servidor On")
 })
