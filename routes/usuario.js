@@ -170,7 +170,7 @@ router.post("/RecuperarSenha", (req, res) => {
 
     Usuario.findOne({ email: req.body.email }).then((usuario) => {
         if (usuario) {
-            const link = "http://localhost:8081/usuarios/DefinirSenha/" + usuario._id + ""
+            const link = "http://192.168.0.1/usuarios/DefinirSenha/" + usuario._id + ""
             console.log("usuario id " + usuario._id)
 
             let transporter = nodemailer.createTransport({
