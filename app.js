@@ -979,8 +979,8 @@ app.get("/perfil", (req, res,next) => {
 
 
 app.get("/vendas", (req, res,next) => {
-
-    Pagamentos.find({ StatusV: 1 }, function (err, orders) {
+var st = 1
+    Pagamentos.find({ StatusV: st }, function (err, orders) {
 
         if (err) {
 
@@ -1052,7 +1052,7 @@ app.use("/usuarios", usuarios)
 
 //Outros
 const PORT = process.env.PORT || 8081
-app.listen(80, () => {
+app.listen(8081, () => {
 
     console.log("Servidor On")
 })
