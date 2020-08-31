@@ -533,14 +533,17 @@ app.post("/calculaFrete", (req, res, next) => {
 
 
 app.post('/cep/consulta', (req, res) => {
+    const idConsulta = req.body.idConsulta
+    Postagem.findOne({_id:idConsulta}).then((postagens)=>{
 
-
+  
+ 
 
     const { calcularPrecoPrazo } = require("correios-brasil");
 
     const cep = req.body.cep
     console.log(cep)
-    const idConsulta = req.body.idConsulta
+  
     const confere = "" + cep + ""; // 21770200 , '21770-200', '21770 200'.... qualquer um formato serve
     const { consultarCep } = require("correios-brasil");
     consultarCep(confere).then((response) => {
@@ -553,13 +556,13 @@ app.post('/cep/consulta', (req, res) => {
             // Não se preocupe com a formatação dos valores de entrada do cep, qualquer uma será válida (ex: 21770-200, 21770 200, 21asa!770@###200 e etc),
             sCepOrigem: "06704255",
             sCepDestino: "" + cep + "",
-            nVlPeso: "1",
-            nCdFormato: "1",
-            nVlComprimento: "20",
-            nVlAltura: "20",
-            nVlLargura: "20",
+            nVlPeso: postagens.peso,
+            nCdFormato: postagens.formato,
+            nVlComprimento: postagens.comprimento,
+            nVlAltura: postagens.altura,
+            nVlLargura: postagens.largura,
             nCdServico: "04014  ",
-            nVlDiametro: "0",
+            nVlDiametro: postagens.diametro,
         };
 
         calcularPrecoPrazo(args2).then((response2) => {
@@ -599,7 +602,7 @@ app.post('/cep/consulta', (req, res) => {
 
 
 
-
+})
 
 
 
