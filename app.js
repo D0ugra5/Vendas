@@ -752,6 +752,7 @@ app.post("/resposta", (req, res) => {
                         if (pagamentos) {
                             console.log(pagamentos.IdUsuario)
                             pagamentos.Status = "Pagamento Aprovado, Seu pedido esta sendo Preparado"
+                            pagamentos. StatusV = 1
                             pagamentos.save().then(() => {
 
                                 console.log("tmj junto doug fiz a boa do salvamento")
@@ -846,7 +847,8 @@ app.post("/Pedido", async (req, res, next) => {
         observacoes: req.body.observacoes,
         IdUsuario: req.user._id,
         cart: cart,
-        Status: stt
+        Status: stt,
+       
     }
 
 
@@ -947,14 +949,51 @@ app.get("/perfil", (req, res,next) => {
         }
         var cart
         orders.forEach(function (order) {
-              cart = new Cart(order.Produtos)
+              cart = new Cart(order.cart)
 
               order.items = cart.generateArray()
         });
   
-        
+   var nome = req.user.nome
+   var email = req.user.email
+   
  
-  res.render("Usuarios/Compra",{orders:orders})
+  res.render("Usuarios/Compra",{orders:orders , nome:nome , email:email})
+    }).lean();
+
+
+
+
+
+
+
+
+
+
+})
+
+
+app.get("/vendas", (req, res,next) => {
+
+    Pagamentos.find({ StatusV: 1 }, function (err, orders) {
+
+        if (err) {
+
+            return res.write('Error')
+
+        }
+        var cart
+        orders.forEach(function (order) {
+              cart = new Cart(order.cart)
+
+              order.items = cart.generateArray()
+        });
+  
+   var nome = req.user.nome
+   var email = req.user.email
+   
+ 
+  res.render("Usuarios/VendasA",{orders:orders , nome:nome , email:email})
     }).lean();
 
 
@@ -995,7 +1034,7 @@ app.use("/usuarios", usuarios)
 
 //Outros
 const PORT = process.env.PORT || 8081
-app.listen(80, () => {
+app.listen(8081, () => {
 
     console.log("Servidor On")
 })

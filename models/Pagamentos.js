@@ -60,6 +60,12 @@ idPagamento:{
  Status:{
  type:String,
  required:true
+ },
+
+ StatusV : {
+ type:Number,
+ default:0
+
  }
 
 
