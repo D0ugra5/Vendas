@@ -1,3 +1,5 @@
+<!--
+
 <div class="card mb-3">
  
   <input type="hidden" name="id" value="{{postagem._id}}">
@@ -19,13 +21,7 @@
 <a href="/add-cart/{{postagem._id}}">
     <button class="btn btn-success">Comprar</button>
 </a>
-  
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#cep").mask("99999-999");
-});
-</script>
-  
+
 
 
 
@@ -60,6 +56,52 @@ $(document).ready(function(){
 
 </div>
   
+-->
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{postagem.titulo}}</h5>
+    <img src="/upload/{{postagem.nomeImagem}}" alt=""  class="img-thumbnail">
+  </div>
+  <div class="col-md-8">
+    <div class="card-body">
+
+      <h4>R$: {{postagem.preco}}</h4>
+      <h5 class="mt-4">Descrição : </h5>
+      <p class="card-text">{{postagem.descricao}}</p>
+     <div class="card">
+     
+      <p>Conteudo Do Embalagem : </p>
+      <p class="card-text"><small class="text-muted">{{postagem.conteudo}}</small></p>
+</div>
+      <a href="/add-cart/{{postagem._id}}">
+        <button class="btn btn-success btn-lg mt-4" >Comprar</button>
+      </a>
+
+    </div>
 
 
 
+    <form action="/cep/consulta" method="POST">
+
+
+
+
+      <h1 class="mt-4">Pesquisar Cep</h1>
+
+      <input type="hidden" name="idConsulta" value="{{postagem._id}}">
+
+
+      <input id="cep" name="cep" type="text" class="form-control">
+
+      <button class="btn btn-success mt-4">Pesquisar</button>
+  </div>
+
+  <h5>{{Valor}}</h5>
+  {{>CepBox}}
+
+
+
+  </form>
+
+</div>
+</div>

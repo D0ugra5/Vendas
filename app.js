@@ -1013,6 +1013,19 @@ app.get("/vendas", (req, res,next) => {
 })
 
 
+app.get("/home",(req,res)=>{
+
+
+res.render("Sobre/home")
+
+
+
+
+})
+
+
+
+
 
 
 
@@ -1039,7 +1052,7 @@ app.use("/usuarios", usuarios)
 
 //Outros
 const PORT = process.env.PORT || 8081
-app.listen(80, () => {
+app.listen(8081, () => {
 
     console.log("Servidor On")
 })
