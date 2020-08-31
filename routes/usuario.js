@@ -193,7 +193,7 @@ router.post("/RecuperarSenha", (req, res) => {
             // more statements
 
             transporter.sendMail({
-                from: "Devs Jabinho <douglasmb87@gmail.com>",
+                from: "Devs Jabinho <faustin2424@gmail.com>",
                 to: "" + usuario.email + "",
                 subject: "Recuperar Senha Devs Jabinho",
                 html: " Para recupera a Senha Click no link  a seguir <a href='" + link + "'>CLIQUE AQUI</a> Seja Bem vindo Novamente"
