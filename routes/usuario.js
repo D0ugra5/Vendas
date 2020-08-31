@@ -13,7 +13,7 @@ const { route } = require('./admin')
 
 router.get("/registro", (req, res) => {
 
-    res.render("usuarios/registro")
+    res.render("Usuarios/registro")
 
 
 })
