@@ -178,8 +178,8 @@ router.post("/RecuperarSenha", (req, res) => {
                 port: 465,
                 secure: true,
                 auth: {
-                    user: "douglasmb87@gmail.com",
-                    pass: "douglas12345678"
+                    user: "faustin2424@gmail.com",
+                    pass: "jubileudamorte"
 
 
                 }
